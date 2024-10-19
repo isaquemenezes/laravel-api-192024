@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +14,12 @@ use App\Http\Controllers\Api\UserController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
+// Route::middleware('auth:sanctum')->get('/Contact', function (Request $request) {
+//     return $request->Contact();
 // });
 Route::get('/', function () {
     return response()->json([
         'success' => true
     ]);
 });
-Route::apiResource('users', UserController::class);
+Route::apiResource('contacts', ContactController::class);

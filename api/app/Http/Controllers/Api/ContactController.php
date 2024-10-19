@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UserRequest;
+use Illuminate\Http\JsonResponse;
 
-
-class UserController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        $users = User::where('status', 'ativo')
+        $contacts = Contact::where('status', 'ativo')
                     ->get();
         return response()
-                ->json($users);
+                ->json($contacts);
     }
 
     /**
@@ -30,13 +30,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(ContactRequest $request): JsonResponse
     {
-        $user = User::create($request->validated());
+        $contact = Contact::create($request->validated());
 
         return response()->json([
-            'message' => 'Usuário criado com sucesso!',
-            'user' => $user
+            'message' => 'Contato criado com sucesso!',
+            'contact' => $contact
         ], 201);
     }
 
@@ -46,10 +46,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $user = User::findOrFail($id);
-        return response()->json($user);
+        $contact = Contact::findOrFail($id);
+        return response()->json($contact);
     }
 
     /**
@@ -59,14 +59,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request,User $user)
+    public function update(ContactRequest $request,Contact $contact): JsonResponse
     {
 
         $validated =   $request->validated();
 
-        $user->update($validated);
+        $contact->update($validated);
         return response()->json([
-            'message' => 'Usuário atualizado com sucesso'
+            'message' => 'Contato atualizado com sucesso'
         ]);
     }
 
@@ -76,11 +76,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
-        $user = User::findOrFail($id);
-        $user->status = 'inativo';
-        $user->save();
+        $contact = Contact::findOrFail($id);
+        $contact->status = 'inativo';
+        $contact->save();
 
         return response()->json(null, 204);
     }

@@ -42,17 +42,17 @@ php artisan migrate --seed
 curl http://127.0.0.1:8000/
 ```
 ## API Doc
-- GET /users — Listar todos os contatos.
-- POST /users — Criar um novo contato
-- GET /users/{id} — Exibir detalhes de um contato.
-- PUT/PATCH /users/{id} — Atualizar um contato existente.
-- DELETE /users/{id} — Deletar um usuário.
+- GET /contacts — Listar todos os contatos.
+- POST /contacts — Criar um novo contato
+- GET /contacts/{id} — Exibir detalhes de um contato.
+- PUT/PATCH /contacts/{id} — Atualizar um contato existente.
+- DELETE /contacts/{id} — Deletar um usuário.
 
-1. GET /users
-<img src="/preview/getUsers.png">
+1. GET /contacts
+<img src="/preview/getContacts.png">
 
-2. GET /users/{id} — Exibir detalhes de um contato.
-<img src="/preview/getUserId.png">
+2. GET /contacts/{id} — Exibir detalhes de um contato.
+<img src="/preview/getContactsId.png">
 
 ### Tecnologias
 

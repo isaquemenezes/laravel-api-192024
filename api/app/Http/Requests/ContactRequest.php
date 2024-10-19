@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 
-class UserRequest extends FormRequest
+class ContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -45,7 +45,7 @@ class UserRequest extends FormRequest
             'email' => [
                 'nullable',
                 'email',
-                Rule::unique('users', 'email')->ignore($this->user),
+                Rule::unique('contacts', 'email')->ignore($this->contact),
             ],
            
             'telefone' => 'nullable|string|max:12',
