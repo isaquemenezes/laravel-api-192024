@@ -18,8 +18,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('status', 'ativo')->get();
-        return response()->json($users);
+        $users = User::where('status', 'ativo')
+                    ->get();
+        return response()
+                ->json($users);
     }
 
     /**
@@ -63,7 +65,9 @@ class UserController extends Controller
         $validated =   $request->validated();
 
         $user->update($validated);
-        return response()->json(['message' => 'Usuário atualizado com sucesso']);
+        return response()->json([
+            'message' => 'Usuário atualizado com sucesso'
+        ]);
     }
 
     /**

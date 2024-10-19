@@ -26,7 +26,7 @@ class UserFactory extends Factory
         return [
             'nome' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'telefone' => $this->generateCpf(),
+            'telefone' => $this->generateContato(),
             'cep' => $this->faker->postcode(),
             'estado' => $this->faker->state(),
             'cidade' => $this->faker->city(),
@@ -44,5 +44,19 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    /**
+     * @return string 
+     * 
+     * @var int $dd
+     * @var string $numero
+    */
+    private function generateContato(): string
+    {
+        
+        $dd = rand(11, 99);
+        $numero = '9' . rand(10000000, 99999999);
+        return "$dd $numero";
     }
 }
