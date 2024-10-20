@@ -8,6 +8,7 @@ use App\Services\ContactService;
 use App\Models\Contact;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Http\Resources\ContactResource;
 
 class ContactController extends Controller
 {
@@ -27,7 +28,8 @@ class ContactController extends Controller
     {
         $contacts = Contact::where('status', 'ativo')
                     ->get();
-        return response()->json( $contacts );
+
+        return ContactResource::collection($contacts)->response();
     }
 
 
@@ -45,7 +47,7 @@ class ContactController extends Controller
         $cepData = $this->contactService->buscarEnderecoPorCep($validatedData['cep']);
 
         if ($cepData){
-            
+
             $validatedData = array_merge($validatedData, $cepData);
         }
 
@@ -67,7 +69,9 @@ class ContactController extends Controller
     public function show(int $id): JsonResponse
     {
         $contact = Contact::findOrFail($id);
-        return response()->json($contact);
+        
+        return (new ContactResource($contact))->response();
+
     }
 
     /**
@@ -81,8 +85,8 @@ class ContactController extends Controller
     {
 
         $validated = $request->validated();
-
         $contact->update($validated);
+
         return response()->json([
             'message' => 'Contato atualizado com sucesso'
         ],200);
@@ -103,8 +107,8 @@ class ContactController extends Controller
         return response()->json([
             'message' => 'Contato excluído com sucesso!'
         ], 200);
-    }
 
+    }
 
     public function searchByEmailNome(Request $request): JsonResponse
     {

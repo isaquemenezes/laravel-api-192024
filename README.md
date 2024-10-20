@@ -111,8 +111,8 @@ curl http://127.0.0.1:8000/
 
 ## Notas
 1. As mensagens de erro nao são exibidas - para testes via json(Postman)
-[-] Accept application/json
-[-] Content-Type application/json
+- Accept application/json
+- Content-Type application/json
 
 ### Tecnologias :books:
 
