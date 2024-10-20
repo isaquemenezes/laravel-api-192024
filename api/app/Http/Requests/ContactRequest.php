@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\Http;
 
 class ContactRequest extends FormRequest
 {
@@ -42,12 +42,7 @@ class ContactRequest extends FormRequest
 
         return [
             'nome' => 'required|string|max:55',
-            'email' => [
-                'nullable',
-                'email',
-                Rule::unique('contacts', 'email')->ignore($this->contact),
-            ],
-           
+            'email' => 'nullable|email',           
             'telefone' => 'nullable|string|max:12',
             'cep' => 'required|string|max:12',
             'estado' => 'nullable|string|max:25',
@@ -61,10 +56,9 @@ class ContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.email' => 'Por favor, insira um e-mail válido.',
-            'email.unique' => 'O e-mail informado já está em uso.',
-           
+                      
         ];
     }
+
 
 }

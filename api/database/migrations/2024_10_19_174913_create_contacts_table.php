@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nome', 55);
             $table->string('email')->unique()->nullable();
             $table->string('telefone', 15);
-            $table->string('cep', 12)->nullable();
+            $table->string('cep', 12);
             $table->string('estado', 25)->nullable();
             $table->string('cidade', 55)->nullable();
             $table->string('bairro', 255)->nullable();

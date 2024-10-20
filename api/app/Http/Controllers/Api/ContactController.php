@@ -4,13 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
-use Illuminate\Http\Request;
+use App\Services\ContactService;
 use App\Models\Contact;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    protected $contactService;
+
+    public function __construct(ContactService $contactService)
+    {
+        $this->contactService = $contactService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +27,9 @@ class ContactController extends Controller
     {
         $contacts = Contact::where('status', 'ativo')
                     ->get();
-        return response()
-                ->json($contacts);
+        return response()->json( $contacts );
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -32,14 +39,28 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request): JsonResponse
     {
-        $contact = Contact::create($request->validated());
+       
+        $validatedData = $request->validated();
+
+        $cepData = $this->contactService->buscarEnderecoPorCep($validatedData['cep']);
+
+        if (!$cepData) 
+        {
+            return response()->json([
+                'message' => 'O CEP informado é inválido!',
+            ], 422);
+        }
+        $validatedData = array_merge($validatedData, $cepData);
+
+        $contact = Contact::create($validatedData);
 
         return response()->json([
             'message' => 'Contato criado com sucesso!',
             'contact' => $contact
         ], 201);
-    }
 
+    }
+   
     /**
      * Display the specified resource.
      *
@@ -62,7 +83,7 @@ class ContactController extends Controller
     public function update(ContactRequest $request,Contact $contact): JsonResponse
     {
 
-        $validated =   $request->validated();
+        $validated = $request->validated();
 
         $contact->update($validated);
         return response()->json([
@@ -82,8 +103,29 @@ class ContactController extends Controller
         $contact->status = 'inativo';
         $contact->save();
 
-        return response()->json(null, 204);
+        return response()->json([
+            'message' => 'Contato excluído com sucesso!'
+        ], 200);
     }
+
+
+    public function searchByEmailNome(Request $request): JsonResponse
+    {
+        // Validação dos parâmetros 'nome' e 'email'
+        $request->validate([
+            'nome' => 'nullable|string|max:55',
+            'email' => 'nullable|email|max:255',
+        ]);       
+
+        $contacts = $this->contactService->searchEmailNome($request);
+
+        return response()->json([
+            'message' => 'Busca realizada com sucesso!',
+            'data' => $contacts
+        ], 200);
+
+    }
+
 
   
 }

@@ -1,11 +1,17 @@
 # laravel-api
 
-## Acesse ao Container
+## Clone o Repositório e acesse 
 ```
-docker-compose exec app bash
+git clone https://github.com/isaquemenezes/laravel-api-192024.git
+cd api
 ```
 
-## Configure seu Banco favorito(aqui estamos com Postgres):
+## Crie o Arquivo .env
+```
+cp .env.example .env
+```
+
+## Atualize as variáveis de ambiente do arquivo .env e Configure seu Banco favorito(aqui estamos com Postgres):
 ```
 DB_CONNECTION=pgsql
 DB_HOST=database-pg
@@ -15,14 +21,30 @@ DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
 ``` 
-
+## Suba os containers do projeto
+```
+docker-compose up -d
+```
+## Acesse ao Container
+```
+docker-compose exec app bash
+```
 ## Instale as dependencias
 ```
 composer install
-
 ```
 
-## Rode as Migrates:
+## Gerar a key do projeto Laravel
+```
+php artisan key:generate
+```
+
+## Rodar Migrations e Seeds em Sequência
+```
+php artisan migrate --seed
+```
+
+## Se preferi Rode as Migrates:
 ```
 php artisan migrate
 ```
@@ -32,10 +54,6 @@ php artisan migrate
 php artisan db:seed 
 ```
 
-## Rodar Migrations e Seeds em Sequência
-```
-php artisan migrate --seed
-```
 
 ## Teste a Aplicação | navegador| Postman| Ferramenta como o curl:
 ```
@@ -46,7 +64,12 @@ curl http://127.0.0.1:8000/
 - POST /contacts — Criar um novo contato
 - GET /contacts/{id} — Exibir detalhes de um contato.
 - PUT/PATCH /contacts/{id} — Atualizar um contato existente.
-- DELETE /contacts/{id} — Deletar um usuário.
+- DELETE /contacts/{id} — Deletar um contato.
+
+- GET /contacts/search?nome=nome - Busque um contato pelo nome
+- GET /contacts/search?email=email@example.com - Busca pelo e-mail
+- GET /contacts/search?nome=nome&email=nome@example.com - Busca tanto por nome quanto por e-mail:
+
 
 1. GET /contacts
 <img src="/preview/getContacts.png">
@@ -54,14 +77,27 @@ curl http://127.0.0.1:8000/
 2. GET /contacts/{id} — Exibir detalhes de um contato.
 <img src="/preview/getContactsId.png">
 
-### Tecnologias
+## Requisitos :checkered_flag:
+
+:trophy: Adicionar Contatos 
+:trophy: Buscar Contatos 
+:trophy: Registrar Contatos 
+:trophy: Endpoint 
+:trophy: filtrar Contatos por nome e email 
+
+> CRUD: Concluido :heavy_check_mark:
+
+> Melhorias: Em desenvolvimento :warning:
+
+
+### Tecnologias :books:
 
 - [via Cep](https://viacep.com.br/)
 - [Postman](https://www.postman.com/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Git](https://git-scm.com/)
 - [GiHub](https://github.com/)
-- [PHP | 8.1.27 ](https://www.php.net/)
+- [PHP | 8.1 ](https://www.php.net/)
 - [Composer](https://getcomposer.org/)
 - [Bootstrap 5.3](https://getbootstrap.com/)
 - [PostgreSQL](https://www.postgresql.org/)

@@ -22,4 +22,6 @@ Route::get('/', function () {
         'success' => true
     ]);
 });
+Route::get('contacts/search', [ContactController::class, 'searchByEmailNome']);
 Route::apiResource('contacts', ContactController::class);
+
