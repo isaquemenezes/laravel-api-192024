@@ -62,8 +62,24 @@ curl http://127.0.0.1:8000/
 ## API Doc
 - GET /contacts — Listar todos os contatos.
 - POST /contacts — Criar um novo contato
+```
+{
+    "nome": "Pessoa Teste",
+    "email": "pessoateste@example.com",
+    "telefone": "91 922014636",
+    "cep": "58390-970"
+}
+```
 - GET /contacts/{id} — Exibir detalhes de um contato.
 - PUT/PATCH /contacts/{id} — Atualizar um contato existente.
+```
+{
+    "nome": "Pessoa Teste Editado",
+    "email": "pessoateste@example.com",
+    "telefone": "91922014636",
+    "cep": "58390970"   
+}
+```
 - DELETE /contacts/{id} — Deletar um contato.
 
 - GET /contacts/search?nome=nome - Busque um contato pelo nome
@@ -79,12 +95,24 @@ curl http://127.0.0.1:8000/
 
 ## Requisitos :trophy:
 
-1. Adicionar Contatos :heavy_check_mark: <br>
+1. Adicionar Contatos :heavy_check_mark: <br> 
 2. Buscar Contatos :heavy_check_mark: <br>
 3. Registrar Contatos :heavy_check_mark: <br>
 4. Endpoint :heavy_check_mark: <br>
 5. Filtrar Contatos por nome e email :heavy_check_mark: <br>
 
+## Validaçoes implementadas :trophy:
+
+1. Email :heavy_check_mark: <br> 
+2. CEP :heavy_check_mark: <br>
+3. Nome :heavy_check_mark: <br>
+4. Telefone :heavy_check_mark: <br>
+
+
+## Notas
+1. As mensagens de erro nao são exibidas - para testes via json(Postman)
+[-] Accept application/json
+[-] Content-Type application/json
 
 ### Tecnologias :books:
 

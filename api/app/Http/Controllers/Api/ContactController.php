@@ -44,13 +44,10 @@ class ContactController extends Controller
 
         $cepData = $this->contactService->buscarEnderecoPorCep($validatedData['cep']);
 
-        if (!$cepData) 
-        {
-            return response()->json([
-                'message' => 'O CEP informado é inválido!',
-            ], 422);
+        if ($cepData){
+            
+            $validatedData = array_merge($validatedData, $cepData);
         }
-        $validatedData = array_merge($validatedData, $cepData);
 
         $contact = Contact::create($validatedData);
 
@@ -67,7 +64,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id): JsonResponse
+    public function show(int $id): JsonResponse
     {
         $contact = Contact::findOrFail($id);
         return response()->json($contact);
@@ -88,7 +85,7 @@ class ContactController extends Controller
         $contact->update($validated);
         return response()->json([
             'message' => 'Contato atualizado com sucesso'
-        ]);
+        ],200);
     }
 
     /**
@@ -97,7 +94,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id): JsonResponse
+    public function destroy(int $id): JsonResponse
     {
         $contact = Contact::findOrFail($id);
         $contact->status = 'inativo';
