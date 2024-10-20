@@ -77,17 +77,13 @@ curl http://127.0.0.1:8000/
 2. GET /contacts/{id} — Exibir detalhes de um contato.
 <img src="/preview/getContactsId.png">
 
-## Requisitos :checkered_flag:
+## Requisitos :trophy:
 
-:trophy: Adicionar Contatos 
-:trophy: Buscar Contatos 
-:trophy: Registrar Contatos 
-:trophy: Endpoint 
-:trophy: filtrar Contatos por nome e email 
-
-> CRUD: Concluido :heavy_check_mark:
-
-> Melhorias: Em desenvolvimento :warning:
+Adicionar Contatos :heavy_check_mark: 
+Buscar Contatos :heavy_check_mark: 
+Registrar Contatos :heavy_check_mark: 
+Endpoint :heavy_check_mark: 
+filtrar Contatos por nome e email :heavy_check_mark: 
 
 
 ### Tecnologias :books:
