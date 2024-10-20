@@ -79,11 +79,11 @@ curl http://127.0.0.1:8000/
 
 ## Requisitos :trophy:
 
-Adicionar Contatos :heavy_check_mark: 
-Buscar Contatos :heavy_check_mark: 
-Registrar Contatos :heavy_check_mark: 
-Endpoint :heavy_check_mark: 
-filtrar Contatos por nome e email :heavy_check_mark: 
+1. Adicionar Contatos :heavy_check_mark: <br>
+2. Buscar Contatos :heavy_check_mark: <br>
+3. Registrar Contatos :heavy_check_mark: <br>
+4. Endpoint :heavy_check_mark: <br>
+5. Filtrar Contatos por nome e email :heavy_check_mark: <br>
 
 
 ### Tecnologias :books:
