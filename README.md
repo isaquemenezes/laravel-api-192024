@@ -95,8 +95,8 @@ curl http://127.0.0.1:8000/
 
 3. buscas
 <div style="display: flex; justify-content: space-between;">
-  <img src="/preview/searchEmail.png" alt="" style="width: 45%;">
-  <img src="/preview/searchNome.png" alt="" style="width: 45%;">
+  <img src="/preview/searchEmail.png" alt="" style="width: 48%;">
+  <img src="/preview/searchNome.png" alt="" style="width: 48%;">
 </div>
 
 ## Requisitos :trophy:
