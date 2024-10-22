@@ -87,13 +87,13 @@ curl http://127.0.0.1:8000/
 - GET /contacts/search?nome=nome&email=nome@example.com - Busca tanto por nome quanto por e-mail:
 
 
-1. GET /contacts
-<img src="/preview/getContacts.png">
+1. GETs 
+<div style="display: flex; justify-content: space-between;">
+    <img src="/preview/getContacts.png" alt="" style="width: 47%;">
+    <img src="/preview/getContactsId.png" alt="" style="width: 47%;">
+</div>
 
-2. GET /contacts/{id} — Exibir detalhes de um contato.
-<img src="/preview/getContactsId.png">
-
-3. buscas
+2. buscas
 <div style="display: flex; justify-content: space-between;">
   <img src="/preview/searchEmail.png" alt="" style="width: 47%;">
   <img src="/preview/searchNome.png" alt="" style="width: 47%;">
