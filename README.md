@@ -101,12 +101,17 @@ curl http://127.0.0.1:8000/
 4. Endpoint :heavy_check_mark: <br>
 5. Filtrar Contatos por nome e email :heavy_check_mark: <br>
 
-## Validaçoes implementadas :trophy:
+## Validaçoes implementadas 🚀
 
 1. Email :heavy_check_mark: <br> 
 2. CEP :heavy_check_mark: <br>
 3. Nome :heavy_check_mark: <br>
 4. Telefone :heavy_check_mark: <br>
+
+## Testes Unitários com PHPUnit
+```
+php artisan test
+```
 
 
 ## Notas
