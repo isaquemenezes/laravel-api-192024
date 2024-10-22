@@ -47,11 +47,21 @@ class ContactService
         $query = Contact::query();
         
         if ($request->filled('nome')) {
-            $query->where('nome', 'LIKE', '%' . $request->nome . '%');
+            // $query->where('nome', 'LIKE', '%' . $request->nome . '%');
+            $query->whereRaw(
+            'LOWER(nome) LIKE ?', [
+                '%' . strtolower(trim($request->nome)) . '%'
+            ]);
+
         }
 
         if ($request->filled('email')) {
-            $query->where('email', 'LIKE', '%' . $request->email . '%');
+            // $query->where('email', 'LIKE', '%' . $request->email . '%');
+            $query->whereRaw(
+            'LOWER(email) LIKE ?', [
+                    '%' . strtolower(trim($request->email)) . '%'
+            ]);
+
         }
 
         return $query->get();

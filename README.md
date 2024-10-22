@@ -93,6 +93,12 @@ curl http://127.0.0.1:8000/
 2. GET /contacts/{id} — Exibir detalhes de um contato.
 <img src="/preview/getContactsId.png">
 
+3. buscas
+<div style="display: flex; justify-content: space-between;">
+  <img src="/preview/searchEmail.png" alt="" style="width: 45%;">
+  <img src="/preview/searchNome.png" alt="" style="width: 45%;">
+</div>
+
 ## Requisitos :trophy:
 
 1. Adicionar Contatos :heavy_check_mark: <br> 
@@ -126,7 +132,9 @@ php artisan test
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Git](https://git-scm.com/)
 - [GiHub](https://github.com/)
+- [Laravel | 10](https://laravel.com/)
 - [PHP | 8.1 ](https://www.php.net/)
 - [Composer](https://getcomposer.org/)
-- [Bootstrap 5.3](https://getbootstrap.com/)
+- [Docker](https://docs.docker.com//)
+- [WSL](https://learn.microsoft.com/pt-br/windows/wsl/install/)
 - [PostgreSQL](https://www.postgresql.org/)

@@ -116,7 +116,8 @@ class ContactController extends Controller
         $request->validate([
             'nome' => 'nullable|string|max:55',
             'email' => 'nullable|email|max:255',
-        ]);       
+        ]);  
+        // return response()->json($request);     
 
         $contacts = $this->contactService->searchEmailNome($request);
 
